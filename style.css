@@ -1,0 +1,106 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.form-notes, .list-notes {
+    width: calc(100vw / 2);
+}
+
+/*Formulario*/
+.form-notes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#input {
+    min-width: 200px;
+    font-size: 1.2rem;
+    margin: 6rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    gap: 1rem;
+    border-radius: 0.5rem;
+}
+.form-title {
+    height: 2rem;
+    border-radius: 2rem;
+    border: 1px solid gray;
+    padding: 0 0.6rem;
+}
+.form-description {
+    resize: none;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid gray;
+}
+.submit-note {
+    margin: 0 auto;
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    border: none;
+    color: white;
+    letter-spacing: 3px;
+    background-color: seagreen;
+}
+
+/*Notas*/
+.list-notes {
+    padding: 1rem;
+}
+
+.note {
+    min-width: 360px;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    display: flex;
+}
+
+.note-information {
+    margin-right: auto;
+}
+
+.note-title {
+    font-size: 1.6rem;
+}
+.note-description {
+    padding-top: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.note-button {
+    display: flex;
+    flex-direction: column;
+    margin: auto 0;
+    gap: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.btn {
+    margin: auto;
+    padding: 0.5rem;
+    background: none;
+    border-radius: 25%;
+    border: none;
+    color: white;
+}
+
+.note-delete {
+    background: crimson;
+}
+.note-edit {
+    background: lightseagreen;
+}
