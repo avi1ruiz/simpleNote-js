@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const deleteBtn = document.getElementsByClassName("note-delete")
     let noteStorage = window.localStorage;
 
-
+    // Agregar notas
     noteForm.addEventListener("submit", (e) => {
         let titleForm = document.querySelector(".form-title").value
         let descriptionForm = document.querySelector(".form-description").value
@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         noteStorage.setItem(storageLength++, JSON.stringify(note))
     })
 
+    // Carga notas ya almacenadas
     if(noteStorage != null) {
         for ( let i = 0; i < noteStorage.length; i++) {
             let note = JSON.parse(noteStorage.getItem(localStorage.key(i)))
@@ -28,21 +29,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     } 
 
+    // Elimina notas
     for (let i = 0; i < deleteBtn.length; i++) {
         deleteBtn[i].addEventListener('click', () => {
             
+            let index = Array.from(deleteBtn).indexOf(deleteBtn[i])
+
             if ( noteStorage.length == 1 ) {
                 noteStorage.clear();
             } 
 
-            let index = Array.from(deleteBtn).indexOf(deleteBtn[i])
             if ( index != noteStorage.key(index) ) {
                 noteStorage.removeItem(noteStorage.key(index))
                 location.reload()
                 return
             }
-            noteStorage.removeItem(index)
 
+            noteStorage.removeItem(index)
             location.reload()
 
         })
