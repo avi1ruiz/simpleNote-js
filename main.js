@@ -21,8 +21,34 @@ document.addEventListener("DOMContentLoaded", () => {
         noteStorage.setItem(storageLength++, JSON.stringify(note))
     })
 
+    if(noteStorage != null) {
+        for ( let i = 0; i < noteStorage.length; i++) {
+            let note = JSON.parse(noteStorage.getItem(localStorage.key(i)))
+            addNotes(note["title"], note["description"])
+        }
+    } 
 
+    for (let i = 0; i < deleteBtn.length; i++) {
+        deleteBtn[i].addEventListener('click', () => {
+            
+            if ( noteStorage.length == 1 ) {
+                noteStorage.clear();
+            } 
 
+            let index = Array.from(deleteBtn).indexOf(deleteBtn[i])
+            if ( index != noteStorage.key(index) ) {
+                noteStorage.removeItem(noteStorage.key(index))
+                location.reload()
+                return
+            }
+            noteStorage.removeItem(index)
+
+            location.reload()
+
+        })
+    }
+
+    
     function addNotes(title, description) {
         const noteHTML = `
             <div class="note">
@@ -42,20 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
-        noteDiv.insertAdjacentHTML("afterbegin", noteHTML);
+        noteDiv.insertAdjacentHTML("beforeend", noteHTML);
     }
-
-    if(noteStorage != null) {
-        for ( let i = 0; i < noteStorage.length; i++) {
-            let note = JSON.parse(noteStorage.getItem(i))
-            addNotes(note["title"], note["description"])
-        }
-    } 
-
-    for (let i = 0; i < deleteBtn.length; i++) {
-        deleteBtn[i].addEventListener('click', () => {
-            console.log("holas")
-        })
-    }
+    
 
 })
