@@ -21,7 +21,7 @@
       <div class="container">
          <!--Contenedor del formulario-->
          <div class="form-notes">
-            <form action="" id="input">
+            <div id="input">
                <input
                   type="text"
                   name="title"
@@ -35,10 +35,13 @@
                   placeholder="Descripcion"
                   class="form-description"
                ></textarea>
-               <button type="submit" class="submit-note">
+               <button type="submit" class="submit-note btn-alt">
                   Submit <i class="fa-solid fa-floppy-disk"></i>
                </button>
-            </form>
+               <button class="update-note btn-alt">
+                  Update <i class="fa-solid fa-pen-to-square"></i>
+               </button>
+            </div>
          </div>
          <!--Contenedor de las notas-->
          <div class="list-notes"></div>

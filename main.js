@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const noteDiv = document.querySelector(".list-notes")
-    const noteForm = document.forms["input"];
+    const noteForm = document.querySelector(".submit-note");
     const deleteBtn = document.getElementsByClassName("note-delete")
     let noteStorage = window.localStorage;
 
     // Agregar notas
-    noteForm.addEventListener("submit", (e) => {
+    noteForm.addEventListener("click", () => {
         let titleForm = document.querySelector(".form-title").value
         let descriptionForm = document.querySelector(".form-description").value
 
@@ -19,38 +19,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let storageLength = noteStorage.length
         noteStorage.setItem(storageLength++, JSON.stringify(note))
+        location.reload()
     })
 
     // Carga notas ya almacenadas
     if(noteStorage != null) {
         for ( let i = 0; i < noteStorage.length; i++) {
             let note = JSON.parse(noteStorage.getItem(localStorage.key(i)))
-            addNotes(note["title"], note["description"])
+            addNotes(note["title"], note["description"])          
         }
     } 
 
     // Elimina notas
     for (let i = 0; i < deleteBtn.length; i++) {
         deleteBtn[i].addEventListener('click', () => {
-            
-            let index = Array.from(deleteBtn).indexOf(deleteBtn[i])
-
-            if ( noteStorage.length == 1 ) {
-                noteStorage.clear();
-            } 
-
-            if ( index != noteStorage.key(index) ) {
-                noteStorage.removeItem(noteStorage.key(index))
-                location.reload()
-                return
-            }
-
-            noteStorage.removeItem(index)
-            location.reload()
-
+            deleteNotes(deleteBtn[i])
         })
     }
 
+    // Actualizar notas
+
+    function deleteNotes(i) {
+        let index = Array.from(deleteBtn).indexOf(i)
+        noteStorage.removeItem(noteStorage.key(index))
+        location.reload()
+    }
     
     function addNotes(title, description) {
         const noteHTML = `

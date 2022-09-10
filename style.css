@@ -44,14 +44,20 @@
     border-radius: 1rem;
     border: 1px solid gray;
 }
-.submit-note {
+.btn-alt {
     margin: 0 auto;
     padding: 0.5rem 1.5rem;
     border-radius: 2rem;
     border: none;
     color: white;
     letter-spacing: 3px;
-    background-color: seagreen;
+}
+.submit-note {
+    background: seagreen;
+}
+.update-note {
+    background:  cornflowerblue;
+    
 }
 
 /*Notas*/
@@ -103,4 +109,12 @@
 }
 .note-edit {
     background: lightseagreen;
+}
+
+/*Hidden*/
+.hide {
+    display: none;
+}
+.show {
+    display: block;
 }
